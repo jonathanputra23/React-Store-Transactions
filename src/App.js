@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './Pages/Home';
-import Cart from './Pages/Cart';
+import Cart from './components/Cart';
 import React from 'react';
 
 function App() {

@@ -1,47 +1,93 @@
-import { useState } from "react";
-import React from "react";
-import ItemCard from "../ItemCard";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+import ProductsList from '../components/ProductsList';
+import Cart from '../components/Cart';
 
 function Home(){
-    const [selectedItems, setSelectedItems] = useState([]);
-    const addToCart = (itemName, price, quantity) => {
-        const newItem = {
-          itemName,
-          price,
-          quantity,
-        };
-    
-        setSelectedItems(prevSelectedItems => [...prevSelectedItems, newItem]);
-      };
-    
-    
-    
-    return (
-    <><div className="App"><h1>Your Price Calculator App</h1></div>
-          <ItemCard
-            imageUrl="path/to/image.jpg"
-            itemName="Product A"
-            price={10}
-            addToCart={addToCart}
+  const [products, setProducts] = useState([
+    {
+      id: 1,
+      name: 'Item 1',
+      price: 10,
+      qty: 0,
+      image: 'path/to/item1.jpg',
+    },
+    {
+      id: 2,
+      name: 'Item 2',
+      price: 15,
+      qty: 0,
+      image: 'path/to/item1.jpg',
+    },
+    // Add more products here...
+  ]);
 
-          />
+  const [cartItems, setCartItems] = useState([]);
 
-          <ItemCard
-            imageUrl="path/to/another-image.jpg"
-            itemName="Product B"
-            price={15}
-            addToCart={addToCart}
+  const handleAddToCart = (product) => {
+    const existingItem = cartItems.find((item) => item.id === product.id);
 
-          />
-            <Link to={{ pathname: "/cart", state: { items: selectedItems } }}>
+    if (existingItem) {
+      setCartItems((prevItems) =>
+        prevItems.map((item) =>
+          item.id === existingItem.id
+            ? { ...item, qty: item.qty + 1 }
+            : item
+        )
+      );
+    } else {
+      setCartItems((prevItems) => [...prevItems, { ...product, qty: 1 }]);
+    }
+
+    setProducts((prevProducts) =>
+      prevProducts.map((p) =>
+        p.id === product.id ? { ...p, qty: p.qty + 1 } : p
+      )
+    );
+  };
+
+  const handleSubtractFromCart = (product) => {
+    const existingItem = cartItems.find((item) => item.id === product.id);
+
+    if (existingItem && existingItem.qty > 0) {
+      setCartItems((prevItems) =>
+        prevItems.map((item) =>
+          item.id === existingItem.id
+            ? { ...item, qty: item.qty - 1 }
+            : item
+        )
+      );
+
+      setProducts((prevProducts) =>
+        prevProducts.map((p) =>
+          p.id === product.id ? { ...p, qty: p.qty - 1 } : p
+        )
+      );
+    }
+  };
+
+  return (
+      <div className="app">
+        <header>
+          <h1>Online Store</h1>
+
+        </header>
+        <ProductsList
+              products={products}
+              onAdd={handleAddToCart}
+              onSubtract={handleSubtractFromCart}
+            />
+      <Link to= "/cart"
+    state={{
+      item:  cartItems }
+    }>
             <button className="add-to-cart-button">
                 Add to Cart
             </button>
             </Link>
-        </>
-    );
-    
-}
+      </div>
+      
+  );
+};
 
 export default Home;
