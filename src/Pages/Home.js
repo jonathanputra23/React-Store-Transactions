@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import ProductsList from '../components/ProductsList';
-import Cart from '../components/Cart';
+import './Home.css';
 
 function Home(){
   const [products, setProducts] = useState([
@@ -16,6 +16,34 @@ function Home(){
       id: 2,
       name: 'Item 2',
       price: 15,
+      qty: 0,
+      image: 'path/to/item1.jpg',
+    },
+    {
+      id: 3,
+      name: 'Item 3',
+      price: 20,
+      qty: 0,
+      image: 'path/to/item1.jpg',
+    },
+    {
+      id: 4,
+      name: 'Item 3',
+      price: 20,
+      qty: 0,
+      image: 'path/to/item1.jpg',
+    },
+    {
+      id: 5,
+      name: 'Item 3',
+      price: 20,
+      qty: 0,
+      image: 'path/to/item1.jpg',
+    },
+    {
+      id: 6,
+      name: 'Item 3',
+      price: 20,
       qty: 0,
       image: 'path/to/item1.jpg',
     },
