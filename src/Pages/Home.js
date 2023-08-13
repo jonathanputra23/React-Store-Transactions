@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ProductsList from '../components/ProductsList';
 import './Home.css';
 
@@ -113,7 +113,11 @@ function Home(){
                 Add to Cart
             </button>
             </Link>
+            <Link to="/transactions">
+        <button className="view-transactions-button">View Transactions</button>
+      </Link>
       </div>
+      
       
   );
 };
