@@ -1,6 +1,6 @@
 # Online Store Application
 
-Welcome to the Online Store Application! This is a simple e-commerce website built using React.js, where users can browse and purchase various products. The application also features a shopping cart, checkout functionality, and transaction logging.
+Welcome to the Online Store Application! This is a simple e-commerce website built using React.js, where a booth owner can calculate price and log transactions. The application also features a shopping cart, checkout functionality, and transaction logging.
 
 ## Table of Contents
 
@@ -14,6 +14,7 @@ Welcome to the Online Store Application! This is a simple e-commerce website bui
 - [Technologies Used](#technologies-used)
 - [Contributing](#contributing)
 - [License](#license)
+
 ## Features
 
 - Browse and add products to the cart
@@ -21,7 +22,7 @@ Welcome to the Online Store Application! This is a simple e-commerce website bui
 - View the cart's total price and individual item subtotals
 - Proceed to checkout and log transactions
 - View transaction history
-- Apply promotions and discounts
+- Apply promotions and discounts (To be added)
 
 ## Getting Started
 ### Prerequisites
@@ -31,16 +32,20 @@ Before you begin, ensure you have the following installed:
 - Node.js and npm (Node Package Manager)
 
 ### Installation
+
 1. Clone this repository: `git clone https://github.com/your-username/online-store-app.git`
 2. Navigate to the project directory: `cd online-store-app`
 3. Install the required dependencies: `npm install`
 
 ## Usage
 ### Running the Application
+
 1. Start the development server: `npm start`
-2. Open your web browser and navigate to `http://localhost:3000` to access the application.
+2. Start the database server: 'node Express.js'
+3. Open your web browser and navigate to `http://localhost:3000` to access the application.
 
 ### Using the Application
+
 1. Browse the products on the home page.
 2. Click the "+" button to add items to your cart and adjust quantities using the "+" and "-" buttons.
 3. Click the "Add to Cart" button to view and manage your cart.
@@ -49,6 +54,7 @@ Before you begin, ensure you have the following installed:
 6. Click the "View Transactions" button to see your transaction history.
 
 ### Excel to JSON Conversion
+
 To populate the application with product data, an Excel file can be converted to JSON format using various tools available online. This JSON data can then be used to pre-fill the product listings.
 
 ## Technologies Used
