@@ -1,6 +1,6 @@
-# Online Store Application
+# React Store Application
 
-Welcome to the Online Store Application! This is a simple e-commerce website built using React.js, where a booth owner can calculate price and log transactions. The application also features a shopping cart, checkout functionality, and transaction logging.
+Welcome to the React Store Application! This is a simple e-commerce website built using React.js, where a booth owner can calculate price and log transactions. The application also features a shopping cart, checkout functionality, and transaction logging.
 
 ## Table of Contents
 
