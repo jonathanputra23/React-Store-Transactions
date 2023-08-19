@@ -5,7 +5,7 @@ import './Cart.css';
 import Axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import CheckoutModal from '../components/CheckoutModal';
-
+import { Link } from 'react-router-dom';
 const Cart = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [checkoutSuccess, setCheckoutSuccess] = useState(false);
@@ -30,13 +30,22 @@ const Cart = () => {
   return (
     <div className="cart">
       <h2>Your Cart</h2>
-      <div>
+      <Link to="/" className="back-button">Back</Link>
+      <div className="cart-items">
+        <div className="cart-item">
+          <div className="cart-item-info">
+            <h3 className="cart-item-name">Item</h3>
+            <p className="cart-item-price">Price (Rupiah)</p>
+            <p className="cart-item-qty">Qty</p>
+            <p className="cart-item-subtotal">Subtotal</p>
+          </div>
+        </div>
         {cartItems.map((item) => (
           <CartItem key={item.id} cartItem={item} />
         ))}
-        <p>Total: ${calculateTotal(cartItems)}</p>
-        <button className="checkout-button" onClick={handleCheckout}>Checkout</button>
       </div>
+      <p className="cart-total">Total: Rp. {calculateTotal(cartItems)}</p>
+      <button className="checkout-button" onClick={handleCheckout}>Checkout</button>
       <CheckoutModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} checkoutSuccess ={checkoutSuccess} />
     </div>
   );

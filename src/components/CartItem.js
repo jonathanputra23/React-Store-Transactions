@@ -3,10 +3,15 @@ import React from 'react';
 const CartItem = ({ cartItem }) => {
   return (
     <div className="cart-item">
-      <h3>{cartItem.name}</h3>
-      <p>Price: ${cartItem.price}</p>
-      <p>Qty: {cartItem.qty}</p>
+      <img src={cartItem.image} alt={cartItem.name} />
+      <div className="cart-item-info">
+        <h3 className="cart-item-name">{cartItem.name}</h3>
+        <p className="cart-item-price">Rp. {cartItem.price}</p>
+        <p className="cart-item-qty">{cartItem.qty}</p>
+        <p className="cart-item-subtotal">{cartItem.price * cartItem.qty}</p>
+      </div>
     </div>
+
   );
 };
 

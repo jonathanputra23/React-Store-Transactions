@@ -2,54 +2,15 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProductsList from '../components/ProductsList';
 import './Home.css';
+import ItemData from '../items.json';
 
-function Home(){
-  const [products, setProducts] = useState([
-    {
-      id: 1,
-      name: 'Item 1',
-      price: 10,
-      qty: 0,
-      image: process.env.PUBLIC_URL + '/images/image.jpg',
-    },
-    {
-      id: 2,
-      name: 'Item 2',
-      price: 15,
-      qty: 0,
-      image: process.env.PUBLIC_URL + '/images/image.jpg',
-    },
-    {
-      id: 3,
-      name: 'Item 3',
-      price: 20,
-      qty: 0,
-      image: process.env.PUBLIC_URL + '/images/image.jpg',
-    },
-    {
-      id: 4,
-      name: 'Item 4',
-      price: 25,
-      qty: 0,
-      image: process.env.PUBLIC_URL + '/images/image.jpg',
-    },
-    {
-      id: 5,
-      name: 'Item 5',
-      price: 30,
-      qty: 0,
-      image: process.env.PUBLIC_URL + '/images/image.jpg',
-    },
-    {
-      id: 6,
-      name: 'Item 6',
-      price: 35,
-      qty: 0,
-      image: process.env.PUBLIC_URL + '/images/image.jpg',
-    },
-    // Add more products here...
-  ]);
+function Home() {
+  const updatedProducts = ItemData.map(product => ({
+    ...product,
+    image: process.env.PUBLIC_URL + '/images/' + product.image
+  }));
 
+  const [products, setProducts] = useState(updatedProducts); 
   const [cartItems, setCartItems] = useState([]);
 
   const handleAddToCart = (product) => {
@@ -94,31 +55,62 @@ function Home(){
     }
   };
 
-  return (
-      <div className="app">
-        <header>
-          <h1>Online Store</h1>
+  const categorizedProducts = {
+    sticker: products.filter((product) => product.category === 'Sticker'),
+    keychain: products.filter((product) => product.category === 'Keychain'),
+    poster: products.filter((product) => product.category === 'Poster'),
+  };
 
-        </header>
-        <ProductsList
-              products={products}
-              onAdd={handleAddToCart}
-              onSubtract={handleSubtractFromCart}
-            />
-      <Link to= "/cart"
-    state={{
-      item:  cartItems }
-    }>
-            <button className="add-to-cart-button">
-                Add to Cart
-            </button>
-            </Link>
-            <Link to="/transactions">
+  return (
+    <div className="app">
+      <Link to="/transactions">
         <button className="view-transactions-button">View Transactions</button>
       </Link>
+      <header>
+        <h1>Online Store</h1>
+      </header>
+      {/* Sticker Products */}
+      <div className="category-section">
+        <h2>Stickers</h2>
+        <ProductsList
+          products={categorizedProducts.sticker}
+          onAdd={handleAddToCart}
+          onSubtract={handleSubtractFromCart}
+        />
       </div>
-      
-      
+
+      {/* Keychain Products */}
+      <div className="category-section">
+        <h2>Keychains</h2>
+        <ProductsList
+          products={categorizedProducts.keychain}
+          onAdd={handleAddToCart}
+          onSubtract={handleSubtractFromCart}
+        />
+      </div>
+
+      {/* Poster Products */}
+      <div className="category-section">
+        <h2>Posters</h2>
+        <ProductsList
+          products={categorizedProducts.poster}
+          onAdd={handleAddToCart}
+          onSubtract={handleSubtractFromCart}
+        />
+      </div>
+      <Link to="/cart"
+        state={{
+          item: cartItems
+        }
+        }>
+        <button className="add-to-cart-button floating-button">
+          Add to Cart
+        </button>
+      </Link>
+
+    </div>
+
+
   );
 };
 
