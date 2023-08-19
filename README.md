@@ -41,7 +41,7 @@ Before you begin, ensure you have the following installed:
 ### Running the Application
 
 1. Start the development server: `npm start`
-2. Start the database server: 'node Express.js'
+2. Start the database server: `node Express.js`
 3. Open your web browser and navigate to `http://localhost:3000` to access the application.
 
 ### Using the Application
