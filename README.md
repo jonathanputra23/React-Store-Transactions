@@ -1,6 +1,9 @@
 # React Store Application
 
-Welcome to the React Store Application! This is a simple e-commerce website built using React.js, where a booth owner can calculate price and log transactions. The application also features a shopping cart, checkout functionality, and transaction logging.
+**About React-Store-Transactions**
+
+This project is a straightforward website developed using React.js. The primary purpose of this application is to provide booth owners with a user-friendly platform to manage their transactions, calculate prices, and maintain a precise transaction logging.
+
 
 ## Table of Contents
 
