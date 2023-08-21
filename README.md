@@ -63,12 +63,10 @@ To populate the application with product data, an Excel file can be converted to
 ## Technologies Used
 
 - React.js
-- React Router
 - Axios
 - SQLite (for transaction logging)
 - CSS (for styling)
 - JSON (for product data)
-- Express.js (for API and server)
 
 ## Contributing
 
