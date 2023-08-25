@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import CheckoutModal from '../components/CheckoutModal';
 import { Link } from 'react-router-dom';
 import { createClient } from '@supabase/supabase-js'; // Import Supabase client
-
+const dateTimeWIB = DateTime.now().setZone('Asia/Jakarta');
 const Cart = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [checkoutSuccess, setCheckoutSuccess] = useState(false);
@@ -24,7 +24,7 @@ const Cart = () => {
           name: item.name,
           price: item.price,
           qty: item.qty,
-          datetime: new Date().toISOString()
+          datetime: dateTimeWIB.toISO()
         })));
 
       if (error) {
