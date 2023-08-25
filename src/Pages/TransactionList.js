@@ -58,7 +58,7 @@ const TransactionList = () => {
             onChange={(e) => setSelectedDate(e.target.value)}
           />
         </div>
-        <p className="summary">Total: ${total}</p>
+        <p className="summary">Total: Rp. {total}</p>
         <p className="summary">Total Quantity: {totalQuantity}</p>
         <p className="summary">Item Quantities:</p>
         <ul>

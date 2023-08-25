@@ -68,7 +68,7 @@ function Home() {
         <button className="view-transactions-button">View Transactions</button>
       </Link>
       <header>
-        <h1>Online Store</h1>
+        <h1>JoyfullyScribbled Booth Store!</h1>
       </header>
       {/* Sticker Products */}
       <div className="category-section">

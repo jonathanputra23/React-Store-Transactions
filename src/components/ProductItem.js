@@ -5,7 +5,7 @@ const ProductItem = ({ product, onAdd, onSubtract }) => {
     <div className="product-item">
       <img src={product.image} alt={product.name}  />
       <h3>{product.name}</h3>
-      <p>Price: Rp. {product.price}</p>
+      <p>Rp. {product.price}</p>
       <div>
         <button onClick={() => onSubtract(product)}>-</button>
         <span>{product.qty}</span>

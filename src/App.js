@@ -6,7 +6,7 @@ import TransactionList from './Pages/TransactionList';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/React-Store-Transactions">
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/cart" element={<Cart />}/>

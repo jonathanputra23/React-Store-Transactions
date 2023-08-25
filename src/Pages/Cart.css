@@ -1,3 +1,56 @@
+/* Common styles for mobile */
+@media screen and (max-width: 480px) {
+  .back-button {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .cart {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .cart-item {
+    margin-bottom: 8px;
+    padding: 8px 0;
+  }
+
+  .cart-item img {
+    max-width: 60px;
+    margin-right: 8px;
+  }
+
+  .cart-item-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cart-item-name img {
+    max-width: 30px;
+    margin-bottom: 3px;
+  }
+
+  .cart-item-name span {
+    font-size: 16px;
+  }
+
+  .cart-item-price,
+  .cart-item-qty,
+  .cart-item-subtotal {
+    font-size: 14px;
+  }
+
+  .checkout-button {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+/* Default styles */
 .back-button {
   display: inline-block;
   padding: 8px 15px;
@@ -46,14 +99,13 @@ h2 {
 .cart-item-info {
   display: flex;
   justify-content: space-between;
-  /* Aligns children to the left and right */
   align-items: center;
-  width: 100%; /* Ensure the info takes up the full width */
+  width: 100%;
 }
 
 .cart-item-name {
   display: flex;
-  flex-direction: column; /* Stack the image and name vertically */
+  align-items: center;
 }
 
 .cart-item-name img {
@@ -62,10 +114,25 @@ h2 {
   margin-bottom: 5px; /* Add spacing between image and name */
 }
 
-.cart-item-name span {
+.cart-total {
+  text-align: right; /* Align the total to the right */
+  margin-top: 10px; /* Add some spacing between items and total */
+  font-weight: bold;
   font-size: 18px;
 }
+.cart-item-name span {
+  font-size: 18px;
+  margin-left: 10px; /* Add spacing between image and name */
+}
 
+.cart-item-attribute {
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  flex: 1; /* Each attribute takes up equal space */
+  margin-right: 10px; /* Add spacing between attributes */
+}
 .cart-item-price,
 .cart-item-qty,
 .cart-item-subtotal {
@@ -79,6 +146,7 @@ h2 {
 .cart-item-subtotal {
   margin-right: 10px; /* Add spacing between Price, Qty, and Subtotal */
 }
+
 .checkout-button {
   display: block;
   width: 100%;

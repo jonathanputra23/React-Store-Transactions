@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import CartItem from '../components/CartItem';
 import { useLocation } from 'react-router-dom';
 import './Cart.css';
-import Axios from 'axios'; // You can remove this import if not used elsewhere
 import 'react-toastify/dist/ReactToastify.css';
 import CheckoutModal from '../components/CheckoutModal';
 import { Link } from 'react-router-dom';
@@ -55,7 +54,7 @@ const Cart = () => {
         <div className="cart-item">
           <div className="cart-item-info">
             <h3 className="cart-item-name">Item</h3>
-            <p className="cart-item-price">Price (Rupiah)</p>
+            <p className="cart-item-price">Price</p>
             <p className="cart-item-qty">Qty</p>
             <p className="cart-item-subtotal">Subtotal</p>
           </div>
