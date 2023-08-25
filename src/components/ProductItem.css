@@ -13,7 +13,7 @@
 }
 
 .product-item h3 {
-  font-size: 15px;
+  font-size: 13px;
   margin: 7px 0;
   white-space: nowrap; /* Prevent text from wrapping */
   overflow: hidden; /* Hide overflow */
@@ -21,7 +21,7 @@
 }
 
 .product-item p {
-  font-size: 13px;
+  font-size: 10px;
   color: #666;
   margin-bottom: 10px;
 }

@@ -32,7 +32,7 @@ const TransactionList = () => {
           .from('transactions')
           .select('*')
           .filter('datetime', 'gte', selectedDate)
-          .order('datetime', { ascending: false });
+          .order('id', { descending: true });
   
         setTransactions(data);
       } catch (error) {
@@ -75,7 +75,7 @@ const TransactionList = () => {
           {transactions.map((transaction) => (
             <li key={transaction.id} className="transaction-details">
               <p>Name: {transaction.name}</p>
-              <p>Price: ${transaction.price}</p>
+              <p>Price: Rp. {transaction.price}</p>
               <p>Qty: {transaction.qty}</p>
               <p>DateTime: {transaction.datetime}</p>
             </li>
