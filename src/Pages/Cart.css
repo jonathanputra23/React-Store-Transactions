@@ -102,10 +102,7 @@ h2 {
     text-align: center;
   }
   .cart-image {
-    top: -10px;
-    right: 10px;
-    width: 40px;
-    height: 40px;
+    display: none; /* Hide the cart image in mobile view */
   }
   .cart-item-name,
   .cart-item-price,
