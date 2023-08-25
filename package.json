@@ -18,6 +18,7 @@
     "sqlite3": "^5.1.6",
     "web-vitals": "^2.1.4"
   },
+  "homepage": "https://jonathanputra23.github.io/React-Store-Transactions/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
