@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/React-Store-Transactions/static/css/main.9b299b53.css",
-    "main.js": "/React-Store-Transactions/static/js/main.44d13828.js",
+    "main.css": "/React-Store-Transactions/static/css/main.0659685f.css",
+    "main.js": "/React-Store-Transactions/static/js/main.10a7eeac.js",
     "static/js/526.45a8fff5.chunk.js": "/React-Store-Transactions/static/js/526.45a8fff5.chunk.js",
     "static/js/787.2a7b8f94.chunk.js": "/React-Store-Transactions/static/js/787.2a7b8f94.chunk.js",
     "index.html": "/React-Store-Transactions/index.html",
-    "main.9b299b53.css.map": "/React-Store-Transactions/static/css/main.9b299b53.css.map",
-    "main.44d13828.js.map": "/React-Store-Transactions/static/js/main.44d13828.js.map",
+    "main.0659685f.css.map": "/React-Store-Transactions/static/css/main.0659685f.css.map",
+    "main.10a7eeac.js.map": "/React-Store-Transactions/static/js/main.10a7eeac.js.map",
     "526.45a8fff5.chunk.js.map": "/React-Store-Transactions/static/js/526.45a8fff5.chunk.js.map",
     "787.2a7b8f94.chunk.js.map": "/React-Store-Transactions/static/js/787.2a7b8f94.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9b299b53.css",
-    "static/js/main.44d13828.js"
+    "static/css/main.0659685f.css",
+    "static/js/main.10a7eeac.js"
   ]
 }
