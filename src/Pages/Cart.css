@@ -1,153 +1,129 @@
-/* Common styles for mobile */
-@media screen and (max-width: 480px) {
-  .back-button {
-    padding: 6px 12px;
-    font-size: 14px;
+/* Cart.css */
+
+/* Regular View Styles */
+.cart {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+.back-button {
+  display: inline-block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  padding: 5px 10px;
+  background-color: #f0f0f0;
+  color: #333;
+  border-radius: 5px;
+}
+
+.cart-items {
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+}
+
+.cart-item-info {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-image {
+  position: absolute;
+  top: -20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+}
+
+.cart-item-name,
+.cart-item-price,
+.cart-item-qty,
+.cart-item-subtotal {
+  flex: 1;
+  text-align: center;
+}
+
+.cart-total {
+  text-align: right;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.checkout-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Mobile View Styles */
+@media screen and (max-width: 600px) {
+  .cart {
+    padding: 10px;
   }
 
   h2 {
     font-size: 20px;
   }
 
-  .cart {
-    margin: 10px;
-    padding: 10px;
+  .back-button {
+    font-size: 14px;
+    padding: 3px 8px;
   }
 
   .cart-item {
-    margin-bottom: 8px;
-    padding: 8px 0;
-  }
-
-  .cart-item img {
-    max-width: 60px;
-    margin-right: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 20px;
   }
 
   .cart-item-info {
-    flex-direction: column;
-    align-items: flex-start;
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
   }
-
-  .cart-item-name img {
-    max-width: 30px;
-    margin-bottom: 3px;
+  .cart-image {
+    top: -10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
   }
-
-  .cart-item-name span {
-    font-size: 16px;
-  }
-
+  .cart-item-name,
   .cart-item-price,
   .cart-item-qty,
   .cart-item-subtotal {
-    font-size: 14px;
+    width: 100%;
+    text-align: center;
+    margin: 5px 0;
+  }
+
+  .cart-total {
+    margin-top: 10px;
+    font-size: 16px;
   }
 
   .checkout-button {
-    padding: 8px;
+    margin: 20px 0;
+    padding: 8px 16px;
     font-size: 14px;
   }
-}
-
-/* Default styles */
-.back-button {
-  display: inline-block;
-  padding: 8px 15px;
-  background-color: #007bff;
-  color: #fff;
-  text-decoration: none;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  transition: background-color 0.3s;
-}
-
-.back-button:hover {
-  background-color: #0056b3;
-}
-
-h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-/* Cart Styles */
-.cart {
-  margin: 20px;
-  padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-/* ... Other styles ... */
-
-.cart-item {
-  margin-bottom: 10px;
-  border-bottom: 1px solid #ddd;
-  padding: 10px 0;
-  display: flex;
-  align-items: center;
-}
-
-.cart-item img {
-  max-width: 80px;
-  height: auto;
-  margin-right: 10px;
-}
-
-.cart-item-info {
-  display: flex;
-  justify-content: space-between;
-  /* Aligns children to the left and right */
-  align-items: center;
-  width: 100%; /* Ensure the info takes up the full width */
-}
-
-.cart-item-name {
-  display: flex;
-  flex-direction: column; /* Stack the image and name vertically */
-}
-
-.cart-item-name img {
-  max-width: 40px; /* Adjust the size of the image */
-  height: auto;
-  margin-bottom: 5px; /* Add spacing between image and name */
-}
-
-.cart-item-name span {
-  font-size: 18px;
-}
-
-.cart-item-price,
-.cart-item-qty,
-.cart-item-subtotal {
-  font-size: 16px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-}
-
-.cart-item-price,
-.cart-item-subtotal {
-  margin-right: 10px; /* Add spacing between Price, Qty, and Subtotal */
-}
-
-.checkout-button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  text-align: center;
-  cursor: pointer;
-}
-.cart-total {
-  text-align: right; /* Align the total to the right */
-  margin-top: 10px; /* Add some spacing between items and total */
-  font-weight: bold;
-  font-size: 18px;
 }

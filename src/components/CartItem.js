@@ -3,7 +3,7 @@ import React from 'react';
 const CartItem = ({ cartItem }) => {
   return (
     <div className="cart-item">
-      <img src={cartItem.image} alt={cartItem.name} />
+      <img className="cart-image" src={cartItem.image} alt={cartItem.name} />
       <div className="cart-item-info">
         <h3 className="cart-item-name">{cartItem.name}</h3>
         <p className="cart-item-price">Rp. {cartItem.price}</p>
