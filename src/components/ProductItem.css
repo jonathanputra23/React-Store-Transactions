@@ -7,19 +7,17 @@
 
 .product-item img {
   width: 150px;
-  /* Set the width */
   height: 150px;
-  /* Set the height to the same value for a square image */
   object-fit: cover;
-  /* Maintain the aspect ratio and cover the whole space */
   margin-bottom: 5px;
-  /* Add spacing between image and name */
 }
-
 
 .product-item h3 {
   font-size: 18px;
   margin: 10px 0;
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Show ellipsis (...) if text overflows */
 }
 
 .product-item p {
@@ -56,7 +54,6 @@
   margin: 0 10px;
 }
 
-
 /* Media query for smaller screens (e.g., phones) */
 @media (max-width: 768px) {
   .product-item {
@@ -72,41 +69,6 @@
   .product-item h3 {
     font-size: 16px;
     margin: 5px 0;
-  }
-  
-  .product-item p {
-    font-size: 14px;
-    margin-bottom: 5px;
-  }
-  
-  .product-item button {
-    font-size: 14px;
-    padding: 3px 8px;
-    margin: 3px;
-  }
-  
-  .product-item span {
-    font-size: 16px;
-    margin: 0 5px;
-  }
-}
-
-/* Media query for smaller screens (e.g., phones) */
-@media (max-width: 768px) {
-  .product-item {
-    padding: 5px;
-  }
-  
-  .product-item img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-  }
-  
-  .product-item h3 {
-    font-size: 16px;
-    margin: 5px 0;
-    white-space: nowrap; /* Prevent text from wrapping */
   }
   
   .product-item p {

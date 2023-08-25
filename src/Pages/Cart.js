@@ -6,6 +6,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import CheckoutModal from '../components/CheckoutModal';
 import { Link } from 'react-router-dom';
 import { createClient } from '@supabase/supabase-js'; // Import Supabase client
+const { DateTime } = require('luxon'); 
+
 const dateTimeWIB = DateTime.now().setZone('Asia/Jakarta');
 const Cart = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
