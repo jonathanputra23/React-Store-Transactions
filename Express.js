@@ -1,80 +1,72 @@
 const express = require('express');
-const sqlite3 = require('sqlite3').verbose();
 const cors = require('cors');
-const { DateTime } = require('luxon'); 
+const { DateTime } = require('luxon');
+const { createClient } = require('@supabase/supabase-js'); // Import Supabase client
+
 const app = express();
 const port = process.env.PORT || 5000;
 
-const db = new sqlite3.Database('db\database.db', (err) => {
-  if (err) {
-    console.error('Database connection error:', err.message);
-  } else {
-    console.log('Connected to the database');
-  }
-});
+const supabaseUrl = 'https://krbcatjdkhtyffdtrbew.supabase.co'; // Replace with your Supabase URL
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtyYmNhdGpka2h0eWZmZHRyYmV3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTI5ODI4ODcsImV4cCI6MjAwODU1ODg4N30.bYuxnZ33qN7ynutXAA8CloL5VdFPy89E5LlwpLjqJlg'; // Replace with your Supabase API key
+const supabase = createClient(supabaseUrl, supabaseKey);
+
 const dateTimeWIB = DateTime.now().setZone('Asia/Jakarta');
 
 app.use(cors());
-
-// Create the transactions table if it doesn't exist
-db.run(`
-  CREATE TABLE IF NOT EXISTS transactions (
-    id INTEGER PRIMARY KEY,
-    name TEXT,
-    price REAL,
-    qty INTEGER,
-    datetime TEXT
-  );
-`);
-
 app.use(express.json());
 
-app.post('/api/checkout', (req, res) => {
+app.post('/api/checkout', async (req, res) => {
   const { items } = req.body;
-  // Insert transaction into the database
-  const stmt = db.prepare(
-    'INSERT INTO transactions (name, price, qty, datetime) VALUES (?, ?, ?, ?)'
-  );
 
-  items.forEach((item) => {
-    stmt.run(item.name, item.price, item.qty, dateTimeWIB.toISO());
+  const transactions = items.map(item => {
+    return {
+      name: item.name,
+      price: item.price,
+      qty: item.qty,
+      datetime: dateTimeWIB.toISO(),
+    };
   });
 
-  stmt.finalize((err) => {
-    if (err) {
-      console.error(err.message);
+  try {
+    const { data, error } = await supabase.from('transactions').insert(transactions);
+
+    if (error) {
+      console.error('Error logging transaction:', error.message);
       return res.status(500).json({ error: 'Error logging transaction' });
     }
+
     return res.status(200).json({ message: 'Transaction logged successfully' });
-  });
+  } catch (error) {
+    console.error('Error logging transaction:', error.message);
+    return res.status(500).json({ error: 'Error logging transaction' });
+  }
 });
 
-app.get('/api/transactions', (req, res) => {
+app.get('/api/transactions', async (req, res) => {
   const { date } = req.query;
 
-  let query = 'SELECT * FROM transactions';
-  const params = [];
+  let query = supabase.from('transactions').select('*');
+  const startOfDay = dateTimeWIB.startOf('day').toISO();
+  const endOfDay = dateTimeWIB.endOf('day').toISO();
 
   if (date) {
-    // Convert the query date to UTC offset +07:00
-    const queryDateInWIB = new Date(date + 'T00:00:00+07:00').toISOString();
-    
-    query += ' WHERE datetime >= ? AND datetime < ?';
-    params.push(queryDateInWIB, new Date(new Date(queryDateInWIB).getTime() + 24 * 60 * 60 * 1000).toISOString());
+    query = query.range(startOfDay, endOfDay).filter('datetime', 'gte', date);
   }
 
-  db.all(query, params, (err, rows) => {
-    if (err) {
-      console.error('Error fetching transactions:', err.message);
+  try {
+    const { data, error } = await query;
+
+    if (error) {
+      console.error('Error fetching transactions:', error.message);
       return res.status(500).json({ error: 'Error fetching transactions' });
     }
 
-    return res.status(200).json(rows);
-  });
+    return res.status(200).json(data);
+  } catch (error) {
+    console.error('Error fetching transactions:', error.message);
+    return res.status(500).json({ error: 'Error fetching transactions' });
+  }
 });
-
-
-
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

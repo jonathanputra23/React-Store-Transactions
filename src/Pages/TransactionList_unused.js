@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import Axios from 'axios';
 import { Link } from 'react-router-dom';
-import './TransactionList.css';
-import { createClient } from '@supabase/supabase-js'; // Import Supabase client
-
+import './TransactionList.css'; // Import your CSS file
 
 const TransactionList = () => {
   const [transactions, setTransactions] = useState([]);
   const [selectedDate, setSelectedDate] = useState('');
-
-  const supabaseUrl = 'https://krbcatjdkhtyffdtrbew.supabase.co'; // Replace with your Supabase URL
-  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtyYmNhdGpka2h0eWZmZHRyYmV3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTI5ODI4ODcsImV4cCI6MjAwODU1ODg4N30.bYuxnZ33qN7ynutXAA8CloL5VdFPy89E5LlwpLjqJlg'; // Replace with your Supabase API key
-  const supabase = createClient(supabaseUrl, supabaseKey);
-  
-
   // Calculate total price, total quantity, and item quantities
   const total = transactions.reduce((acc, transaction) => acc + transaction.price * transaction.qty, 0);
   const totalQuantity = transactions.reduce((acc, transaction) => acc + transaction.qty, 0);
@@ -28,13 +21,10 @@ const TransactionList = () => {
     // Fetch transactions from the API when the selectedDate changes
     const fetchTransactions = async () => {
       try {
-        const { data, error } = await supabase
-          .from('transactions')
-          .select('*')
-          .filter('datetime', 'gte', selectedDate)
-          .order('datetime', { ascending: false });
-  
-        setTransactions(data);
+        const response = await Axios.get('http://localhost:5000/api/transactions', {
+          params: { date: selectedDate } // Send selectedDate as a query parameter
+        });
+        setTransactions(response.data);
       } catch (error) {
         console.error('Error fetching transactions:', error);
       }

@@ -58,7 +58,8 @@ function Home() {
   const categorizedProducts = {
     sticker: products.filter((product) => product.category === 'Sticker'),
     keychain: products.filter((product) => product.category === 'Keychain'),
-    poster: products.filter((product) => product.category === 'Poster'),
+    prints: products.filter((product) => product.category === 'Prints'),
+    others: products.filter((product) => product.category === 'Other')
   };
 
   return (
@@ -91,9 +92,17 @@ function Home() {
 
       {/* Poster Products */}
       <div className="category-section">
-        <h2>Posters</h2>
+        <h2>Prints</h2>
         <ProductsList
-          products={categorizedProducts.poster}
+          products={categorizedProducts.prints}
+          onAdd={handleAddToCart}
+          onSubtract={handleSubtractFromCart}
+        />
+      </div>
+      <div className="category-section">
+        <h2>Other</h2>
+        <ProductsList
+          products={categorizedProducts.others}
           onAdd={handleAddToCart}
           onSubtract={handleSubtractFromCart}
         />
