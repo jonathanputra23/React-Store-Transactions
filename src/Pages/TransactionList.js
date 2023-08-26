@@ -32,7 +32,7 @@ const TransactionList = () => {
           .from('transactions')
           .select('*')
           .filter('datetime', 'gte', selectedDate)
-          .order('id', { descending: true });
+          .order('id', { ascending: true });
   
         setTransactions(data);
       } catch (error) {

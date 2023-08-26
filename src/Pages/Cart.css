@@ -43,11 +43,7 @@ h2 {
 }
 
 .cart-image {
-  position: absolute;
-  top: -20px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
+  display: none
 }
 
 .cart-item-name,
